@@ -1,21 +1,18 @@
 const {Router} = require('express');
-
+const pool = require('./db')
 const router = Router();
+const {getAllTasks, getTask, deleteTask, createTask, updateTask} = require ('../controllers/task.controller')
 
-router.get('/tasks', (req, res)=>{
-    res.send('Retrieving a list of task');
-})
-router.get('/tasks/10', (req, res)=>{
-    res.send('Retrieving a list of task');
-})
-router.delete('/tasks', (req, res)=>{
-    res.send('Deleting a task');
-})
-router.post('/tasks', (req, res)=>{
-    res.send('Creating a task');
-})
-router.delete('/tasks', (req, res)=>{
-    res.send('Updating a task');
-})
+router.get('/tasks', getAllTasks)
+
+router.get('/tasks/10', getTask)
+
+
+router.delete('/tasks', deleteTask )
+
+router.post('/tasks',createTask)
+
+
+router.put('/tasks',updateTask)
 
 module.exports = router;
